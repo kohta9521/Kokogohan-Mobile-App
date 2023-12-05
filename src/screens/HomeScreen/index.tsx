@@ -1,9 +1,11 @@
 import React from 'react';
-import { View, Text, Button, Image, StyleSheet, ImageBackground } from 'react-native';
+import { View, Text, Button, Image, StyleSheet, ImageBackground, ScrollView } from 'react-native';
 
 // css
 import Logo from '../../components/atoms/Logo';
 import SectionTitle from '../../components/atoms/SectionTitle';
+import GenreButton from '../../components/atoms/GenreButton';
+import GenreScreen from '../../components/atoms/GenreButton';
 
 
 const HomeScreen = ({ navigation }: any) => {
@@ -16,6 +18,16 @@ const HomeScreen = ({ navigation }: any) => {
             </View>
         </ImageBackground>
         <SectionTitle id={1} title='ジャンル検索' />
+        <ScrollView horizontal={true} style={styles.box}>
+            <GenreButton style={styles.button} id='1' text='全て' />
+            <GenreButton id='1' text='中華' />
+            <GenreButton id='1' text='寿司' />
+            <GenreButton id='1' text='イタリアン' />
+            <GenreButton id='1' text='定食' />
+            <GenreButton id='1' text='エスニック' />
+            <GenreButton id='1' text='カレー' />
+        </ScrollView>
+        <Button title='タグで絞り込む' onPress={() => navigation.navigate('ジャンル')} />
     </View>
   )
 }
@@ -49,7 +61,19 @@ const styles  = StyleSheet.create({
         marginLeft: 20,
         fontWeight: 'bold',
         color: '#fff',
-    }
+    },
+    box: {
+        flexDirection: 'row',
+        marginTop: 20,
+        marginLeft: 10,
+    },
+    ScrollView: {
+        justifyContent: 'space-between',
+    },
+    button: {
+        color: '#fff',
+        backgroundColor: '#ff0211',
+    },
 })
 
 export default HomeScreen;
