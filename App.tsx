@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Button, Icon } from 'react-native';
 
 // react-native-navigation
 import { NavigationContainer } from '@react-navigation/native';
@@ -15,7 +15,7 @@ import MypageScreen from './src/screens/MypageScreen';
 
 // icons
 import { Ionicons } from '@expo/vector-icons';
-import { FontAwesome5 } from '@expo/vector-icons'; 
+import { FontAwesome } from '@expo/vector-icons'; 
 
 const Tab = createBottomTabNavigator();
 
@@ -24,8 +24,37 @@ export default function App() {
     <NavigationContainer>
       <Tab.Navigator
         screenOptions={() => ({
+          // header部分のスタイリング
+          headerStyle: {
+            backgroundColor: '#ff0211',
+          },
+          headerTintColor: '#fff',
+          headerTitleStyle: {
+            fontWeight: 'bold',
+          },
+          // tabBar部分のスタイリング
           tabBarActiveTintColor: '#ff0211',
           tabBarInactiveTintColor: 'gray',
+          // headerLeft部分の要素の記述
+          headerLeft: () => {
+            // ロゴコンポーネントの配置
+          },
+          // headerRight部分の要素の記述
+          headerRight: () => (
+            <Button
+              title='通知'
+              onPress={() => alert('This is a button!')}
+              icon={
+                <Icon
+                  name="bell"
+                  type="font-awesome"
+                  color="white"
+                  size={20}
+                />
+              }
+              buttonStyle={{ marginRight: 10 }}
+            />
+          ),
         })}
       >
         <Tab.Screen
