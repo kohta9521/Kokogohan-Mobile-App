@@ -2,13 +2,13 @@ import React from 'react';
 import { View, Text, Button } from 'react-native';
 
 
-const HomeScreen = ({ navigation }: any) => {
+const MypageScreen = ({ navigation }: any) => {
   return (
     <View>
-      <Text>HomeScreen</Text>
+      <Text>マイページ</Text>
       {/* <Button title='マップ' onPress={() => navigation.navigate('マップ')} /> */}
     </View>
   )
 }
 
-export default HomeScreen;
+export default MypageScreen;
