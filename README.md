@@ -1,1 +1,0 @@
-# kokogohan-mobile-App
