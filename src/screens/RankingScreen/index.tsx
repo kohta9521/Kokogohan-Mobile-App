@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, Button } from 'react-native';
 
 
-const HomeScreen = ({ navigation }: any) => {
+const RankingScreen = ({ navigation }: any) => {
   return (
     <View>
       <Text>HomeScreen</Text>
@@ -11,4 +11,4 @@ const HomeScreen = ({ navigation }: any) => {
   )
 }
 
-export default HomeScreen;
+export default RankingScreen;
