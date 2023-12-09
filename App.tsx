@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Button, Icon } from 'react-native';
 
 // react-native-navigation
 import { NavigationContainer } from '@react-navigation/native';
@@ -12,10 +12,12 @@ import MapScreen from './src/screens/MapScreen';
 import SearchScreen from './src/screens/SearchScreen';
 import RankingScreen from './src/screens/RankingScreen';
 import MypageScreen from './src/screens/MypageScreen';
+import Logo from './src/components/atoms/Logo';
 
 // icons
 import { Ionicons } from '@expo/vector-icons';
-import { FontAwesome5 } from '@expo/vector-icons'; 
+import { FontAwesome } from '@expo/vector-icons';
+
 
 const Tab = createBottomTabNavigator();
 
@@ -24,8 +26,28 @@ export default function App() {
     <NavigationContainer>
       <Tab.Navigator
         screenOptions={() => ({
+          // header部分のスタイリング
+          headerStyle: {
+            backgroundColor: '#ff0211',
+          },
+          headerTintColor: '#fff',
+          headerTitleStyle: {
+            fontWeight: 'bold',
+          },
+          // tabBar部分のスタイリング
           tabBarActiveTintColor: '#ff0211',
           tabBarInactiveTintColor: 'gray',
+          // headerLeft部分の要素の記述
+          // headerLeft: () => (
+          //   <Logo />
+          // ),
+          // headerRight部分の要素の記述
+          // headerRight: () => (
+          //   <Button
+          //     onPress={() => alert('This is a button!')}
+          //     title='通知'
+          //   />
+          // ),
         })}
       >
         <Tab.Screen
