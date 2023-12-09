@@ -1,38 +1,53 @@
-import React from 'react';
-import { View, Text, Button, Image, StyleSheet, ImageBackground, ScrollView } from 'react-native';
-
+import React, { useState, useEffect } from 'react';
+import { View, Text, Button, Image, StyleSheet, ImageBackground, ScrollView, ActivityIndicator } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 // css
 import Logo from '../../components/atoms/Logo';
 import SectionTitle from '../../components/atoms/SectionTitle';
 import GenreButton from '../../components/atoms/GenreButton';
 import GenreScreen from '../../components/atoms/GenreButton';
 
+const Stack = createNativeStackNavigator();
 
 const HomeScreen = ({ navigation }: any) => {
-  return (
-    <View>
-        <ImageBackground source={require("../../../assets/sample.jpeg")} resizeMode="cover" style={styles.hero}>
-            <View style={styles.titleBox}>
-                <Text style={styles.heroTitle}>近くのリピートの多い店特集</Text>
-                <Text style={styles.heroDesc}>あなたの周りの特にリピートの多いお店をまとめました。{"\n"}ぜひご活用ください！</Text>                
-            </View>
-        </ImageBackground>
-        <SectionTitle id={1} title='ジャンル検索' />
-        <ScrollView horizontal={true} style={styles.box}>
-            <GenreButton style={styles.button} id='1' text='全て' />
-            <GenreButton id='1' text='中華' />
-            <GenreButton id='1' text='寿司' />
-            <GenreButton id='1' text='イタリアン' />
-            <GenreButton id='1' text='定食' />
-            <GenreButton id='1' text='エスニック' />
-            <GenreButton id='1' text='カレー' />
-        </ScrollView>
-        <Button title='タグで絞り込む' onPress={() => navigation.navigate('ジャンル')} />
-    </View>
-  )
-}
+    // loading
+    const [ loading, setLoading ] = useState(true);
+
+    useEffect(() => {
+        setTimeout(() => {
+            setLoading(false);
+        }, 2000);
+    }, []);
+
+    if (loading) {
+        // ローディング中の表示
+        return (
+          <View style={styles.container}>
+            <Image
+              style={{width: 300, height: 70}}
+              source={require('../../../assets/logo.png')}
+            />
+            {/* あってもなくても */}
+            <ActivityIndicator size="small" color="white" style={{marginTop: 10}} />
+          </View>
+        );
+      }
+    
+      // ロードが終了した後の表示
+      return (
+        <View></View>
+      );
+    };
+
 
 const styles  = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: '#ff0211',
+        alignItems: 'center',
+        justifyContent: 'center',
+      },
     hero: {
         width: '100%',
         height: 240,
@@ -61,14 +76,6 @@ const styles  = StyleSheet.create({
         marginLeft: 20,
         fontWeight: 'bold',
         color: '#fff',
-    },
-    box: {
-        flexDirection: 'row',
-        marginTop: 20,
-        marginLeft: 10,
-    },
-    ScrollView: {
-        justifyContent: 'space-between',
     },
     button: {
         color: '#fff',
