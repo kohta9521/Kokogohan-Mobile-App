@@ -27,11 +27,15 @@ const CategoryBox = ({
 const styles = StyleSheet.create({
     box: {
         width: '48%',
-        height: 160,
+        height: 140,
+        borderRadius: 10,
+        borderColor:  'gray',
+        borderWidth: 1,
+        marginBottom: 10,
     },
     image: {
         width: '100%',
-        height: 100,
+        height: 90,
         borderRadius: 10,
     },
     text: {

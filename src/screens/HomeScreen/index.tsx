@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, Button, Image, StyleSheet, ImageBackground, ScrollView, ActivityIndicator } from 'react-native';
+import { View, Text, Button, Image, StyleSheet, ImageBackground, ScrollView, ActivityIndicator, TouchableOpacity } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 // css
@@ -36,11 +36,24 @@ const HomeScreen = ({ navigation }: any) => {
     
       // ロードが終了した後の表示
       return (
-        <View></View>
+        <ScrollView>
+          <View>
+            <SectionTitle id={1} title="タイムライン" />
+            <TouchableOpacity
+            style={styles.button}
+            onPress={() => navigation.navigate('RestaurantDetails', { restaurantId: 1 })}
+          >
+            <View>
+              <Text style={styles.buttonText}>レストラン詳細を見る</Text>
+            </View>
+          </TouchableOpacity>
+          </View>
+        </ScrollView>
       );
     };
 
 
+    
 const styles  = StyleSheet.create({
     container: {
         flex: 1,
@@ -81,6 +94,10 @@ const styles  = StyleSheet.create({
         color: '#fff',
         backgroundColor: '#ff0211',
     },
+  buttonText: {
+      color: '#fff',
+      fontSize: 16,
+  },
 })
 
 export default HomeScreen;
